@@ -1,20 +1,13 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import './SettingsPanel.css'
+import SectionSettingsPanel from './SectionSettingsPanel'
+
 function SettingsPanel() {
     return (
     <div className='settings'>
         <br></br>
-        <Accordion defaultActiveKey="0">
-            <Accordion.Item eventKey="0">
-                    <Accordion.Header>Wybierz dział</Accordion.Header>
-                    <Accordion.Body>
-                        <Button variant="secondary">Stomatologia zachowawcza</Button>{' '}
-                        <Button variant="secondary">Endodoncja</Button>{' '}
-                        <Button variant="secondary">Stomatologia dziecięca</Button>{' '}
-                    </Accordion.Body>
-                </Accordion.Item>
-        </Accordion>
+        <SectionSettingsPanel></SectionSettingsPanel>
 
 
         <br></br>
