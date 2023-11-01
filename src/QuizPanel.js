@@ -20,7 +20,6 @@ function QuizPanel() {
         <div className='quizPanel'>
             <Question questionText={apiQuestion ? apiQuestion.question : "POBIERAM"}></Question>
             <Accordion defaultActiveKey="0">
-            
             {
               apiQuestion ? apiQuestion.answers.map((data, index) => {
                 return (
