@@ -1,0 +1,9 @@
+.quizPanel{
+    text-align: center;
+    width: 85%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
