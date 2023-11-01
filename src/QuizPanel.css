@@ -1,9 +1,22 @@
 .quizPanel{
     text-align: center;
-    width: 85%;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
   }
+
+  
+.accordion-button:is(.collapsed)::after {
+  background-image: initial;
+  width: 0;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: initial;
+  width: 0;
+}
