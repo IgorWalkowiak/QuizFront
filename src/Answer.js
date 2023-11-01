@@ -1,6 +1,10 @@
 import React from "react";
 import "./Answer.css"
+import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 
+const GREEN = 'rgba(34, 139, 34, 0.6)';
+const RED = 'rgba(220, 20, 60, 0.6)';
 
 export default class Answer extends React.Component {
   constructor(props) {
@@ -8,30 +12,16 @@ export default class Answer extends React.Component {
     this.state = {
         render: false,
     }
-    this.alertHi = this.alertHi.bind(this);
-  }
-
-  alertHi() {
-   this.setState({render: !this.state.render});
   }
 
   render() {
     return (
-      <div onClick={this.alertHi} className={this.getAnswerClasses()}>
-        {this.props.answerText}
-        <br></br>
-        {this.state.render && this.props.explanation}
-      </div>
+      <Accordion.Item eventKey={this.props.index}>
+        <Accordion.Header>{this.props.answerText}</Accordion.Header>
+        <Accordion.Body style={{ backgroundColor: this.props.correct=="true" ? GREEN : RED }}>
+          {this.props.explanation}
+        </Accordion.Body>
+    </Accordion.Item>
     );
   }
-
-  getAnswerClasses(){
-    const className = [
-      "answer",
-      this.props.correct=="true" ? "correct" : "wrong",
-      this.state.render ? "clicked" : ""
-    ];
-    return className.join(" ").trim();
-  };
-
 }
