@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import QuizPanel from './QuizPanel';
-import SettingPanel from './SettingPanel'
+import SettingPanel from './settings/SettingsPanel'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Tab from 'react-bootstrap/Tab';
@@ -14,9 +13,9 @@ function App() {
         Boska aplikacja z pytaniami
       </header>
       <Tabs
-      defaultActiveKey="profile"
+      defaultActiveKey="Ustawienia"
       id="uncontrolled"
-      className="mb-3"
+      className="mb-11"
       fill
       justify
     >
