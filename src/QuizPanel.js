@@ -2,34 +2,48 @@ import React, { useState, useEffect } from 'react';
 import Answer from './Answer';
 import Question from './Question';
 import './QuizPanel'
-import Accordion from 'react-bootstrap/Accordion';
 import './QuizPanel.css'
+import Accordion from 'react-bootstrap/Accordion';
+import QuestionNavPanel from './QuestionsNavPanel';
 
-function QuizPanel() {
-    var [apiQuestion, setApiQuestion] = useState(null);
-    async function fetchData() {
-      fetch('http://localhost:5000/questions/1')
-          .then(response => response.json())
-          .then(data => setApiQuestion(data))
+function QuizPanel(props) {
+    var [currentQuestionNo, setCurrentQuestionNo] = useState(0);
+    var [currentQuestion, setCurrentQuestion] = useState(0);
+    
+    const handleNextQuestionClick = () => {
+      setCurrentQuestion(props.questionHandler(currentQuestionNo + 1))
+      setCurrentQuestionNo(currentQuestionNo + 1)
     }
-    useEffect(() => {
-      fetchData()
-    }, []);
-  
+
+    const handlePreviousQuestionClick = () => {
+      const nextQuestionNo = currentQuestionNo - 1
+      if(nextQuestionNo >= 0){
+        setCurrentQuestion(props.questionHandler(nextQuestionNo))
+        setCurrentQuestionNo(nextQuestionNo)
+      }
+    }
+
+    const refreshQuestion = () => {
+      window.alert("TEST")
+    }
+
     return (
         <div className='quizPanel'>
-            <Question questionText={apiQuestion ? apiQuestion.question : "POBIERAM"}></Question>
+            <Question questionText={currentQuestion ? currentQuestion.question_text : "Brak pytania"}></Question>
             <Accordion defaultActiveKey="0">
             {
-              apiQuestion ? apiQuestion.answers.map((data, index) => {
+              currentQuestion ? currentQuestion.answers.map((question, index) => {
                 return (
-                  <Answer answerText={data.answer} explanation={data.explanation} correct={data.correct ? "true":"false"} index={index}/>
-            
+                  <Answer answerText={question.ans} explanation={question.hint} correct={question.correct ? "true":"false"} index={index}/>
                 );
-              }) : "pobieram"
+              }) : "Brak odpowiedzi"
             }
-            
           </Accordion>
+          <QuestionNavPanel 
+            nextQuestionClickHandler={handleNextQuestionClick}
+            previousQuestionClickHandler={handlePreviousQuestionClick}>
+          </QuestionNavPanel>
+
         </div>
     );
   }

@@ -1,6 +1,5 @@
 import React from "react";
 import "./Answer.css"
-import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 
 const GREEN = 'rgba(34, 139, 34, 0.6)';
